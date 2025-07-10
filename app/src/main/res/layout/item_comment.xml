@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/_16dp"
+    android:layout_marginVertical="@dimen/_8dp"
+    android:backgroundTint="@color/white"
+    android:outlineSpotShadowColor="@color/design_default_color_primary"
+    app:cardCornerRadius="@dimen/_12dp"
+    app:cardElevation="@dimen/_6dp"
+    app:strokeWidth="@dimen/_0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvCommentName"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lineSpacingExtra="@dimen/_4dp"
+            android:maxLines="2"
+            android:text="Comment title goes here"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvCommentEmail"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4dp"
+            android:drawableStart="@android:drawable/ic_dialog_email"
+            android:drawablePadding="@dimen/_10dp"
+            android:drawableTint="@color/material_on_background_disabled"
+            android:gravity="center_vertical"
+            android:text="Eliseo@gardner.biz"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/_14sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCommentName" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvCommentBody"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8dp"
+            android:ellipsize="end"
+            android:lineSpacingExtra="@dimen/_4dp"
+            android:maxLines="6"
+            android:text="This is the main comment body, which might be long and should wrap well..."
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCommentEmail" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
