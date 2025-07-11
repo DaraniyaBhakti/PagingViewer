@@ -3,4 +3,7 @@
     <string name="posts">Posts</string>
     <string name="comments">Comments</string>
     <string name="albums">Albums</string>
+    <string name="tab_number">Tab %1$d</string>
+    <string name="uploaded_by_user">Uploaded by User %1$d</string>
+
 </resources>

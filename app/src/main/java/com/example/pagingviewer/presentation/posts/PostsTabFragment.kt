@@ -1,23 +1,15 @@
 package com.example.pagingviewer.presentation.posts
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.example.pagingviewer.data.remote.ApiService
-import com.example.pagingviewer.data.remote.RetrofitHelper
-import com.example.pagingviewer.data.repository.PostRepository
 import com.example.pagingviewer.databinding.FragmentPostsTabBinding
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -26,9 +18,11 @@ import kotlinx.coroutines.launch
 class PostsTabFragment : Fragment() {
 
     private lateinit var binding: FragmentPostsTabBinding
-    private lateinit var adapter: PostAdapter;
+    private val adapter: PostAdapter by lazy {
+        PostAdapter()
+    }
     private val viewModel: PostsViewModel by viewModels()
-    private var hasLoadedOnce = false
+    private var isLoaded = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,8 +40,6 @@ class PostsTabFragment : Fragment() {
 //        val repository = PostRepository(apiService)
 //        viewModel = ViewModelProvider(this, PostViewModelFactory(repository))[PostsViewModel::class.java]
 
-        adapter = PostAdapter()
-        binding.rvPost.layoutManager = LinearLayoutManager(requireContext())
         binding.rvPost.adapter = adapter
 
         //not have to call when using paging 3
@@ -58,18 +50,17 @@ class PostsTabFragment : Fragment() {
         binding.swipeRefreshLayout.setOnRefreshListener {
             adapter.refresh()
         }
-
     }
 
     override fun onResume() {
         super.onResume()
-        if (!hasLoadedOnce) {
-            loadPostWhenTabSelected()
-            hasLoadedOnce = true
+        if (!isLoaded) {
+            loadPosts()
+            isLoaded = true
         }
     }
 
-    private fun loadPostWhenTabSelected() {
+    private fun loadPosts() {
         //need to call api using paging 3 with this
         lifecycleScope.launch {
             viewModel.postFlow.collectLatest {
@@ -79,11 +70,9 @@ class PostsTabFragment : Fragment() {
 
         lifecycleScope.launch {
             adapter.loadStateFlow.collectLatest { loadStates ->
-                // Only show swipeRefreshLoader on initial load
+                // only show swipeRefreshLoader while loading initially
                 binding.swipeRefreshLayout.isRefreshing = loadStates.refresh is LoadState.Loading
             }
         }
     }
-
-
 }

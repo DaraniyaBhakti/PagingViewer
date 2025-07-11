@@ -6,6 +6,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.pagingviewer.R
 import com.example.pagingviewer.databinding.ItemAlbumBinding
 import com.example.pagingviewer.databinding.ItemCommentBinding
 import com.example.pagingviewer.models.Albums
@@ -20,7 +21,7 @@ class AlbumAdapter :
         fun bind(albumItem: Albums) {
             binding.apply {
                 tvAlbumTitle.text = albumItem.title
-                tvAlbumUser.text = "Uploaded by User ${albumItem.userId}"
+                tvAlbumUser.text = binding.root.context.getString(R.string.uploaded_by_user, albumItem.userId)
             }
         }
     }

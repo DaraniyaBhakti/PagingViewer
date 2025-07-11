@@ -35,10 +35,8 @@ class HomeFragment : Fragment() {
                 0 -> getString(R.string.posts)
                 1 -> getString(R.string.comments)
                 2 -> getString(R.string.albums)
-                else -> "Tab ${position + 1}"
+                else -> binding.root.context.getString(R.string.tab_number, position + 1)
             }
         }.attach()
-
     }
-
 }

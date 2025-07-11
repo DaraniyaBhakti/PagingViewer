@@ -10,6 +10,7 @@ class AlbumsRepositoryImpl @Inject constructor(
 ) : AlbumRepository {
 //    override suspend fun getAlbums(): List<Albums> = apiService.getAlbums()
 
+    // Implemented this in pager in viewmodel as it is responsible for  ui changes
 //    override suspend fun getAlbums(): Flow<PagingData<Albums>> {
 //        return Pager(
 //            config = PagingConfig(
