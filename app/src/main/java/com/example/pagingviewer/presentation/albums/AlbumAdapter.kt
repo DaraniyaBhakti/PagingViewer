@@ -4,13 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pagingviewer.R
 import com.example.pagingviewer.databinding.ItemAlbumBinding
-import com.example.pagingviewer.databinding.ItemCommentBinding
 import com.example.pagingviewer.models.Albums
-import com.example.pagingviewer.models.Comment
 
 class AlbumAdapter :
 //    ListAdapter

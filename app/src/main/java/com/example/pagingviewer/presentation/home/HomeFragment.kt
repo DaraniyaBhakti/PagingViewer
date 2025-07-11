@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.pagingviewer.R
 import com.example.pagingviewer.databinding.FragmentHomeBinding
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 class HomeFragment : Fragment() {
