@@ -40,14 +40,18 @@ class PostsTabFragment : Fragment() {
 //        val repository = PostRepository(apiService)
 //        viewModel = ViewModelProvider(this, PostViewModelFactory(repository))[PostsViewModel::class.java]
 
-        binding.rvPost.adapter = adapter
-
+//        binding.rvPost.adapter = adapter
+        binding.adapter = adapter
         //not have to call when using paging 3
 //        viewModel.fetchPostData()
 //        viewModel.post.observe(viewLifecycleOwner){postList ->
 //            adapter.submitList(postList)
 //        }
-        binding.swipeRefreshLayout.setOnRefreshListener {
+//        binding.swipeRefreshLayout.setOnRefreshListener {
+//            adapter.refresh()
+//        }
+
+        binding.onRefresh = {
             adapter.refresh()
         }
     }

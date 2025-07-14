@@ -32,17 +32,19 @@ class AlbumsTabFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.rvAlbum.adapter = adapter
-
+        binding.adapter = adapter
+        binding.onRefresh = {
+            adapter.refresh()
+        }
         // Not required while using paging
 //        viewModel.fetchAlbumsData()
 //        viewModel.albums.observe(viewLifecycleOwner){albums->
 //            adapter.submitList(albums)
 //        }
 
-        binding.swipeRefreshLayout.setOnRefreshListener {
-            adapter.refresh()
-        }
+//        binding.swipeRefreshLayout.setOnRefreshListener {
+//            adapter.refresh()
+//        }
     }
 
     override fun onResume() {
@@ -62,7 +64,6 @@ class AlbumsTabFragment : Fragment() {
 
         lifecycleScope.launch {
             adapter.loadStateFlow.collectLatest { loadStates ->
-                // Only show swipeRefreshLoader on initial load
                 binding.swipeRefreshLayout.isRefreshing = loadStates.refresh is LoadState.Loading
             }
         }

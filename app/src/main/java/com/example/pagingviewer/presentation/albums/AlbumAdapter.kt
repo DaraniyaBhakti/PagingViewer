@@ -13,11 +13,11 @@ class AlbumAdapter :
 //    ListAdapter
     PagingDataAdapter<Albums, AlbumAdapter.AlbumViewHolder>(AlbumItemDiffCallback()) {
     inner class AlbumViewHolder(
-        private val binding: ItemAlbumBinding
+        val binding: ItemAlbumBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(albumItem: Albums) {
             binding.apply {
-                tvAlbumTitle.text = albumItem.title
+//                tvAlbumTitle.text = albumItem.title
                 tvAlbumUser.text = binding.root.context.getString(R.string.uploaded_by_user, albumItem.userId)
             }
         }
@@ -32,6 +32,9 @@ class AlbumAdapter :
     override fun onBindViewHolder(holder: AlbumViewHolder, position: Int) {
         val albumItem: Albums? = getItem(position)
         albumItem?.let { holder.bind(albumItem) }
+        albumItem?.let {
+            holder.binding.album = it
+        }
     }
 }
 

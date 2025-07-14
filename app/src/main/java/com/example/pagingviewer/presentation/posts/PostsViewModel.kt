@@ -45,7 +45,7 @@ class PostsViewModel @Inject constructor(
 
     //when using paging3 we have to use below code
     val postFlow = Pager(
-        config = PagingConfig(pageSize = 10, prefetchDistance = 5),
+        config = PagingConfig(pageSize = 10, prefetchDistance = 2),
         pagingSourceFactory = { repository.getPostPagingSource() }
     ).flow.cachedIn(viewModelScope)
 

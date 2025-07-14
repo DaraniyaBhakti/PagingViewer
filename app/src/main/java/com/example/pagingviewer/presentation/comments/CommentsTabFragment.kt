@@ -35,14 +35,14 @@ class CommentsTabFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        binding.rvComment.adapter = adapter
+        binding.adapter = adapter
 
 //        viewModel.fetchCommentData()
 //        viewModel.comment.observe(viewLifecycleOwner){commentList ->
 //            adapter.submitList(commentList)
 //        }
 
-        binding.swipeRefreshLayout.setOnRefreshListener {
+        binding.onRefresh = {
             adapter.refresh()
         }
     }

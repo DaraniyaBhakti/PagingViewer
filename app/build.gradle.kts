@@ -39,6 +39,9 @@ android {
     viewBinding{
         enable = true
     }
+    buildFeatures {
+        dataBinding = true
+    }
 }
 
 dependencies {
@@ -53,24 +56,24 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    // 🧩 Lifecycle & ViewModel
+    //  Lifecycle & ViewModel
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
-    // 🧩 Retrofit + Gson
+    //  Retrofit + Gson
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
 
-    // 🧩 Coroutine Support
+    //  Coroutine Support
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
 
-    // 🧩 Hilt (dependency injection)
+    //  Hilt (dependency injection)
     implementation( libs.hilt.android)
     kapt(libs.hilt.compiler)
     implementation( libs.androidx.fragment.ktx)
 
-    // 🧩 Paging 3
+    //  Paging 3
     implementation(libs.androidx.paging.runtime)
 
     implementation(libs.androidx.swiperefreshlayout)

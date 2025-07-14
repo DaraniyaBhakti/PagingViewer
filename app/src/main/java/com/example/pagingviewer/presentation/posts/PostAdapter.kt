@@ -10,14 +10,15 @@ import com.example.pagingviewer.models.Post
 
 class PostAdapter : PagingDataAdapter<Post, PostAdapter.PostViewHolder>(PostItemDiffCallback()) {
     inner class PostViewHolder(
-        private val binding: ItemPostBinding
+        val binding: ItemPostBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(postItem: Post) {
-            binding.apply {
-                tvTitle.text = postItem.title
-                tvBody.text = postItem.body
-            }
-        }
+        // not need to bind values here for text if we are using dta binding
+//        fun bind(postItem: Post) {
+//            binding.apply {
+//                tvTitle.text = postItem.title
+//                tvBody.text = postItem.body
+//            }
+//        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
@@ -28,7 +29,14 @@ class PostAdapter : PagingDataAdapter<Post, PostAdapter.PostViewHolder>(PostItem
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         val postItem: Post? = getItem(position)
-        postItem?.let { holder.bind(postItem) }
+
+        //used to bind data when not using data binding
+//        postItem?.let { holder.bind(postItem) }
+
+        //set data using two data binding
+        postItem?.let {
+            holder.binding.post = it
+        }
     }
 }
 
